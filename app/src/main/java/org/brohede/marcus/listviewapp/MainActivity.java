@@ -2,8 +2,11 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +20,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        List<String> listData = new ArrayList<String>(Arrays.asList(mountainNames));
+
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,
+               R.id.my_item_textview, listData);
+
+
+        ListView myListView= (ListView) findViewById(R.id.my_listview);
+        myListView.setAdapter(adapter);
+
+
 
         // The onCreate method is run when the app is created.
         // Before you can implement this you need to create the layout xml files that
